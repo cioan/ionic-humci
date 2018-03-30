@@ -1,0 +1,8 @@
+{
+  "name": "humCi",
+  "app_id": "3bafb9b7",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
