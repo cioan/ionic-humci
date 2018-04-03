@@ -4,5 +4,11 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "proxies": [
+    {
+      "path":"/session",
+      "proxyUrl":"https://humci.pih-emr.org/mirebalais/ws/rest/v1/session"
+    }
+  ]
 }
