@@ -6,4 +6,36 @@
 
 <ion-content padding>
   <h2>Welcome {{userDetails.person.display}}</h2>
+
+  <p>
+    <button ion-button icon-start (click)="searchPatients()">
+      <ion-icon name='search'></ion-icon>
+      Search Patients
+    </button>
+  </p>
+  <p>
+    <button ion-button outline icon-start>
+      <ion-icon name='copy' is-active="false"></ion-icon>
+      Check-in
+    </button>
+
+  </p>
+
+  <p>
+    <button ion-button icon-start (click)="addUser()">
+      <ion-icon name='person-add'></ion-icon>
+      Add User
+    </button>
+  </p>
+
+  <ion-searchbar (ionInput)="getItems($event)">
+
+  </ion-searchbar>
+  <ion-list inset>
+    <ion-item *ngFor="let user of users">
+      <h2>{{user.name}}</h2>
+      <p>{{user.email}}</p>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

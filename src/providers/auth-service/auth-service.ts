@@ -22,20 +22,19 @@ export class AuthServiceProvider {
 
   postData(credentials, type) {
     return new Promise((resolve, reject) => {
-      let headers = new Headers({ 'Content-Type': 'application/json' });
 
       if (credentials && credentials.username) {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
         let base64 = btoa(credentials.username + ':' + credentials.password);
-
         headers.append('Authorization', 'Basic ' + base64);
+
+        this.http.get(window.location.origin + "/session" , {headers: headers}).subscribe(res => {
+          localStorage.setItem("authHeaders", JSON.stringify(headers));
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        });
       }
-
-      this.http.get(window.location.origin + "/session" , {headers: headers}).subscribe(res => {
-        resolve(res.json());
-      }, (err) => {
-        reject(err);
-      });
-
 
     });
 

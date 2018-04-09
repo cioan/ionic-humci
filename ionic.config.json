@@ -9,6 +9,10 @@
     {
       "path":"/session",
       "proxyUrl":"https://humci.pih-emr.org/mirebalais/ws/rest/v1/session"
+    },
+    {
+      "path":"/patient",
+      "proxyUrl":"https://humci.pih-emr.org/mirebalais/ws/rest/v1/patient"
     }
   ]
 }
