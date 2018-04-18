@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SearchPatientProvider } from '../../providers/searchpatient/searchpatient';
+import {PatientPage} from "../patient/patient";
+import {AutoCompleteComponent} from "ionic2-auto-complete-ng5";
+
 
 /**
  * Generated class for the SearchPatientPage page.
@@ -21,8 +24,18 @@ export class SearchPatientPage {
               public searchPatientProvider: SearchPatientProvider) {
   }
 
+  @ViewChild('searchbar')
+  searchbar: AutoCompleteComponent;
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPatientPage');
+    this.searchbar.setFocus();
+  }
+
+  showPatient(event) {
+    if (event) {
+      this.navCtrl.push(PatientPage, {uuid: event.uuid});
+    }
   }
 
 }

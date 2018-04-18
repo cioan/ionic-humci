@@ -13,6 +13,10 @@
     {
       "path":"/patient",
       "proxyUrl":"https://humci.pih-emr.org/mirebalais/ws/rest/v1/patient"
+    },
+    {
+      "path":"/patientprofile",
+      "proxyUrl":"https://humci.pih-emr.org/mirebalais/ws/rest/v1/patientprofile"
     }
   ]
 }

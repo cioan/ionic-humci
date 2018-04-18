@@ -16,12 +16,14 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import {SearchPatientPage} from "../pages/search-patient/search-patient";
 import {AdduserPage} from "../pages/adduser/adduser";
+import {PatientPage} from "../pages/patient/patient";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { RestProvider } from '../providers/rest/rest';
 import { SearchPatientProvider } from '../providers/searchpatient/searchpatient';
+import { PatientprofileProvider } from '../providers/patientprofile/patientprofile';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { SearchPatientProvider } from '../providers/searchpatient/searchpatient'
     LoginPage,
     TabsPage,
     SearchPatientPage,
-    AdduserPage
+    AdduserPage,
+    PatientPage
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -52,7 +55,8 @@ import { SearchPatientProvider } from '../providers/searchpatient/searchpatient'
     LoginPage,
     TabsPage,
     SearchPatientPage,
-    AdduserPage
+    AdduserPage,
+    PatientPage
   ],
   providers: [
     StatusBar,
@@ -60,7 +64,8 @@ import { SearchPatientProvider } from '../providers/searchpatient/searchpatient'
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     RestProvider,
-    SearchPatientProvider
+    SearchPatientProvider,
+    PatientprofileProvider
   ]
 })
 export class AppModule {}
