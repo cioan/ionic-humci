@@ -14,6 +14,7 @@
 
 
 <ion-content padding>
-  <ion-auto-complete [dataProvider]="searchPatientProvider"></ion-auto-complete>
+  <ion-auto-complete [dataProvider]="searchPatientProvider" (itemSelected)="showPatient($event)"
+                     #searchbar></ion-auto-complete>
 
 </ion-content>
