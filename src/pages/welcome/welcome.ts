@@ -17,6 +17,9 @@ import { LoginPage } from '../login/login'
 export class WelcomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log("welcome page controller");
+    let d = new Date('1945-07-01T00:00:00.000+0000');
+    console.log("d = " + d.getFullYear());
   }
 
   login() {

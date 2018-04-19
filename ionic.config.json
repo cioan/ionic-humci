@@ -8,15 +8,11 @@
   "proxies": [
     {
       "path":"/session",
-      "proxyUrl":"https://humci.pih-emr.org/mirebalais/ws/rest/v1/session"
+      "proxyUrl":"https://bwenzi.pih-emr.org/openmrs/ws/rest/v1/session"
     },
     {
       "path":"/patient",
-      "proxyUrl":"https://humci.pih-emr.org/mirebalais/ws/rest/v1/patient"
-    },
-    {
-      "path":"/patientprofile",
-      "proxyUrl":"https://humci.pih-emr.org/mirebalais/ws/rest/v1/patientprofile"
+      "proxyUrl":"https://bwenzi.pih-emr.org/openmrs/ws/rest/v1/patient"
     }
   ]
 }

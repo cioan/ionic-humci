@@ -3,7 +3,7 @@ import {Headers, Http} from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map'
 
-let apiUrl = 'https://humci.pih-emr.org/mirebalais/ws/rest/v1/patient';
+let apiUrl = 'https://bwenzi.pih-emr.org/openmrs/ws/rest/v1/patient';
 
 /*
   Generated class for the SearchPatientProvider provider.
@@ -15,6 +15,7 @@ let apiUrl = 'https://humci.pih-emr.org/mirebalais/ws/rest/v1/patient';
 export class SearchPatientProvider implements AutoCompleteService{
 
   labelAttribute = "display";
+  formValueAttribute = "uuid";
 
   constructor(public http: Http) {
     console.log('Hello SearchPatientProvider Provider');

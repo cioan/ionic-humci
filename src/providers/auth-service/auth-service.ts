@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 
 
-let apiUrl = 'https://humci.pih-emr.org/mirebalais/ws/rest/v1/session';
+let apiUrl = 'https://bwenzi.pih-emr.org/openmrs/ws/rest/v1/session';
 
 
 /*
