@@ -21,15 +21,12 @@ export class PatientProvider {
   getPatient(uuid:string) {
 
     return new Promise( (resolve, reject) => {
-      let headers = JSON.parse(localStorage.getItem('authHeaders'));
-      console.log("headers = " + headers);
 
-      this.http.get(window.location.origin + "/patient/" + uuid + "?" + patientCustomRep,
-        {headers: headers}).subscribe(data => {
+      this.http.get(window.location.origin + "/patient/" + uuid + "?" + patientCustomRep).subscribe(data => {
         console.log(data);
         resolve(data);
-      }, err => {
-        console.log("Error retrieving patient");
+      }, (error: any) => {
+        console.log("Error retrieving patient. error.status=" + error.status);
       });
 
     });

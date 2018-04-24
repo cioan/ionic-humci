@@ -39,9 +39,9 @@ export class PatientDetailPage {
       this.patientDetails = result;
       console.log("patientDetails = " + this.patientDetails);
       if (result.hasOwnProperty("person")) {
-        this.patient.display = result.person.display;
+        this.patient.display = this.patientDetails.display;
         // this.patient.birthdate = result.person.birthdate;
-        this.patient.birthdate  = new Date(result.person.birthdate).toISOString();
+        this.patient.birthdate  = new Date(this.patientDetails.person.birthdate).toISOString();
         // this.patient.birthdate = '1945-07-01T00:00:00.000+00:00';
       }
 

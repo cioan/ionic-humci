@@ -1,5 +1,5 @@
 import { AutoCompleteService } from 'ionic2-auto-complete-ng5';
-import {Headers, Http} from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map'
 
@@ -17,23 +17,18 @@ export class SearchPatientProvider implements AutoCompleteService{
   labelAttribute = "display";
   formValueAttribute = "uuid";
 
-  constructor(public http: Http) {
+  constructor(public http: HttpClient) {
     console.log('Hello SearchPatientProvider Provider');
   }
 
   getResults(keyword:string) {
 
-    let headers = JSON.parse(localStorage.getItem('authHeaders'));
-    console.log("headers = " + headers);
+    return new Promise( (resolve, reject) => {
+      this.http.get( window.location.origin + "/patient?q=" + keyword ).subscribe( data => {
+        resolve(data.results.filter(item => item.display.toLowerCase().includes(keyword.toLowerCase())));
 
-    return this.http.get(window.location.origin + "/patient?q=" + keyword, {headers: headers})
-      .map(
-        result =>
-        {
-          return result.json().results
-            .filter(item => item.display.toLowerCase().includes(keyword.toLowerCase()) )
-        });
-
+      });
+    });
   }
 
 }

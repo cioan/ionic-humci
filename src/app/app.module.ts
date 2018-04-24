@@ -1,12 +1,11 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from "@angular/http";
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AutoCompleteModule } from 'ionic2-auto-complete-ng5';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
 
 import { WelcomePage } from '../pages/welcome/welcome'
 import { LoginPage } from '../pages/login/login'
@@ -25,6 +24,7 @@ import { RestProvider } from '../providers/rest/rest';
 import { SearchPatientProvider } from '../providers/searchpatient/searchpatient';
 import { PatientProvider } from '../providers/patient/patient';
 
+import { httpInterceptorProviders } from '../http-interceptors'
 
 @NgModule({
   declarations: [
@@ -62,6 +62,7 @@ import { PatientProvider } from '../providers/patient/patient';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    httpInterceptorProviders,
     AuthServiceProvider,
     RestProvider,
     SearchPatientProvider,

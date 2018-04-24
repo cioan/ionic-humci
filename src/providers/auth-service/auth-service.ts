@@ -29,7 +29,7 @@ export class AuthServiceProvider {
         headers.append('Authorization', 'Basic ' + base64);
 
         this.http.get(window.location.origin + "/session" , {headers: headers}).subscribe(res => {
-          localStorage.setItem("authHeaders", JSON.stringify(headers));
+          localStorage.setItem("authToken", JSON.stringify(base64));
           resolve(res.json());
         }, (err) => {
           reject(err);
