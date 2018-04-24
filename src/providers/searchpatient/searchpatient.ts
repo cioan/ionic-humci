@@ -17,6 +17,8 @@ export class SearchPatientProvider implements AutoCompleteService{
   labelAttribute = "display";
   formValueAttribute = "uuid";
 
+  response : any;
+
   constructor(public http: HttpClient) {
     console.log('Hello SearchPatientProvider Provider');
   }
@@ -25,7 +27,8 @@ export class SearchPatientProvider implements AutoCompleteService{
 
     return new Promise( (resolve, reject) => {
       this.http.get( window.location.origin + "/patient?q=" + keyword ).subscribe( data => {
-        resolve(data.results.filter(item => item.display.toLowerCase().includes(keyword.toLowerCase())));
+        this.response = data;
+        resolve(this.response.results.filter(item => item.display.toLowerCase().includes(keyword.toLowerCase())));
 
       });
     });

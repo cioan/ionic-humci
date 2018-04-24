@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from "@angular/http";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AutoCompleteModule } from 'ionic2-auto-complete-ng5';
+import { AgGridModule} from "ag-grid-angular";
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -41,6 +42,7 @@ import { httpInterceptorProviders } from '../http-interceptors'
   ],
   imports: [
     BrowserModule, HttpModule,
+    AgGridModule.withComponents([]),
     HttpClientModule,
     AutoCompleteModule,
     IonicModule.forRoot(MyApp)
