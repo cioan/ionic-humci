@@ -5,6 +5,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import {TabsPage} from "../tabs/tabs";
 import {SearchPatientPage} from "../search-patient/search-patient";
 import {AdduserPage} from "../adduser/adduser";
+import { CheckinPage } from "../checkin/checkin";
 
 @Component({
   selector: 'page-home',
@@ -20,17 +21,6 @@ export class HomePage {
 
   userPostData = {"user_id":"","token":""};
 
-  columnDefs = [
-    {headerName: 'Make', field: 'make' },
-    {headerName: 'Model', field: 'model' },
-    {headerName: 'Price', field: 'price'}
-  ];
-
-  rowData = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 }
-  ];
 
   constructor(public app: App,
               public navCtrl: NavController,
@@ -42,7 +32,7 @@ export class HomePage {
 
     this.userPostData.user_id = this.userDetails.systemId;
     this.userPostData.token = this.userDetails.uuid;
-    this.getUsers();
+    // this.getUsers();
   }
 
   getUsers() {
@@ -78,6 +68,11 @@ export class HomePage {
   searchPatients() {
     this.navCtrl.push(SearchPatientPage);
   }
+
+  checkin() {
+    this.navCtrl.push(CheckinPage);
+  }
+
   addUser() {
     this.navCtrl.push(AdduserPage);
   }

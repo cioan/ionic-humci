@@ -14,22 +14,12 @@
     </button>
   </p>
   <p>
-    <button ion-button outline icon-start>
+    <button ion-button outline icon-start  (click)="checkin()">
       <ion-icon name='copy' is-active="false"></ion-icon>
       Check-in
     </button>
 
   </p>
-
-  <ag-grid-angular
-    style="width: 500px; height: 500px;"
-    class="ag-theme-balham"
-    [enableSorting]="true"
-    [enableFilter]="true"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs">
-  </ag-grid-angular>
-
 
 
 </ion-content>

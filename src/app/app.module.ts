@@ -17,6 +17,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {SearchPatientPage} from "../pages/search-patient/search-patient";
 import {PatientDetailPage} from "../pages/patient-detail/patient-detail";
 import {AdduserPage} from "../pages/adduser/adduser";
+import { CheckinPage } from "../pages/checkin/checkin";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,6 +38,7 @@ import { httpInterceptorProviders } from '../http-interceptors'
     LoginPage,
     TabsPage,
     SearchPatientPage,
+    CheckinPage,
     PatientDetailPage,
     AdduserPage
   ],
@@ -57,6 +59,7 @@ import { httpInterceptorProviders } from '../http-interceptors'
     LoginPage,
     TabsPage,
     SearchPatientPage,
+    CheckinPage,
     PatientDetailPage,
     AdduserPage
   ],
