@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SearchPatientProvider } from '../../providers/searchpatient/searchpatient';
+import {PatientDetailPage} from "../patient-detail/patient-detail";
 
 /**
  * Generated class for the CheckinPage page.
@@ -27,7 +28,12 @@ export class CheckinPage {
     {headerName: 'Last Name', valueGetter: 'data.person.names[0].familyName' },
     {headerName: 'Gender', field: 'person.gender' },
     {headerName: 'Age', field: 'person.age' },
-    {headerName: 'Birthdate', field: 'person.birthdate', type: ['dateColumn'] }
+    {
+      headerName: 'Birthdate',
+      field: 'person.birthdate',
+      type: 'date',
+      valueFormatter: this.dateFormatter
+    }
   ];
 
   rowData: any;
@@ -51,10 +57,28 @@ export class CheckinPage {
     });
   }
 
+  dateFormatter(params) {
+
+    var formatDate = (new Date(params.value)).toDateString();
+    return formatDate;
+  }
+
   onGridReady(params) {
     console.log("onGridReady!");
     this.gridApi = params.api;
     params.api.setRowData(this.patients);
   }
 
+  filterPatients(ev: any) {
+    let filterValue = ev.target.value;
+    console.log("filter value = " + filterValue);
+    this.gridApi.setQuickFilter(filterValue);
+  }
+
+  selectPatient(ev: any){
+    console.log("patient selected: " + ev);
+    this.navCtrl.push(PatientDetailPage, {
+      data: ev.data.uuid
+    });
+  }
 }

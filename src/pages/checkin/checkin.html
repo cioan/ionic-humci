@@ -14,13 +14,23 @@
 
 
 <ion-content padding>
+
+
+  <ion-searchbar placeholder="Search by ID or Name" (ionInput)="filterPatients($event)">
+
+  </ion-searchbar>
+
+  <ion-label padding-top="16px">Today's Appointments</ion-label>
+
   <ag-grid-angular #agGrid
     style="height: 100%"
     class="ag-theme-balham"
     [enableSorting]="true"
     [enableFilter]="true"
     [rowData]="rowData"
-    [columnDefs]="columnDefs" (gridReady)="onGridReady($event)"
+    [columnDefs]="columnDefs"
+    (gridReady)="onGridReady($event)"
+    (rowClicked)="selectPatient($event)"
   >
   </ag-grid-angular>
 </ion-content>
