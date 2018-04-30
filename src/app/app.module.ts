@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from "@angular/http";
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AutoCompleteModule } from 'ionic2-auto-complete-ng5';
 import { AgGridModule} from "ag-grid-angular";
 
@@ -27,6 +27,7 @@ import { SearchPatientProvider } from '../providers/searchpatient/searchpatient'
 import { PatientProvider } from '../providers/patient/patient';
 
 import { httpInterceptorProviders } from '../http-interceptors'
+import { UtilsProvider } from '../providers/utils/utils';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { httpInterceptorProviders } from '../http-interceptors'
     AuthServiceProvider,
     RestProvider,
     SearchPatientProvider,
-    PatientProvider
+    PatientProvider,
+    UtilsProvider
   ]
 })
 export class AppModule {}

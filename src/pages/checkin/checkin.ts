@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SearchPatientProvider } from '../../providers/searchpatient/searchpatient';
+import { UtilsProvider } from '../../providers/utils/utils';
 import {PatientDetailPage} from "../patient-detail/patient-detail";
 
 /**
@@ -19,29 +20,32 @@ export class CheckinPage {
 
   patients: any;
   results: any;
+  rowData: any;
 
   private gridApi;
+  private dateUtils;
+  private columnDefs;
 
-  columnDefs = [
-    {headerName: 'ID', valueGetter: 'data.identifiers[0].identifier' },
-    {headerName: 'First Name', valueGetter: 'data.person.names[0].givenName' },
-    {headerName: 'Last Name', valueGetter: 'data.person.names[0].familyName' },
-    {headerName: 'Gender', field: 'person.gender' },
-    {headerName: 'Age', field: 'person.age' },
-    {
-      headerName: 'Birthdate',
-      field: 'person.birthdate',
-      type: 'date',
-      valueFormatter: this.dateFormatter
-    }
-  ];
-
-  rowData: any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public searchPatientProvider: SearchPatientProvider) {
+              public searchPatientProvider: SearchPatientProvider,
+              public utils: UtilsProvider) {
 
+    this.columnDefs = [
+      {headerName: 'ID', valueGetter: 'data.identifiers[0].identifier' },
+      {headerName: 'First Name', valueGetter: 'data.person.names[0].givenName' },
+      {headerName: 'Last Name', valueGetter: 'data.person.names[0].familyName' },
+      {headerName: 'Gender', field: 'person.gender' },
+      {headerName: 'Age', field: 'person.age' },
+      {
+        headerName: 'Birthdate',
+        field: 'person.birthdate',
+        valueFormatter: this.dateFormatter.bind(this)
+      }
+    ];
+
+    this.dateUtils = utils;
     this.getPatients();
   }
 
@@ -58,25 +62,20 @@ export class CheckinPage {
   }
 
   dateFormatter(params) {
-
-    var formatDate = (new Date(params.value)).toDateString();
-    return formatDate;
+    return this.dateUtils.formatDate(params.value);
   }
 
   onGridReady(params) {
-    console.log("onGridReady!");
     this.gridApi = params.api;
     params.api.setRowData(this.patients);
   }
 
   filterPatients(ev: any) {
     let filterValue = ev.target.value;
-    console.log("filter value = " + filterValue);
     this.gridApi.setQuickFilter(filterValue);
   }
 
   selectPatient(ev: any){
-    console.log("patient selected: " + ev);
     this.navCtrl.push(PatientDetailPage, {
       data: ev.data.uuid
     });
