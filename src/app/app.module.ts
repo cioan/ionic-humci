@@ -14,10 +14,11 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import {SearchPatientPage} from "../pages/search-patient/search-patient";
-import {PatientDetailPage} from "../pages/patient-detail/patient-detail";
-import {AdduserPage} from "../pages/adduser/adduser";
+import { SearchPatientPage } from "../pages/search-patient/search-patient";
+import { PatientDetailPage } from "../pages/patient-detail/patient-detail";
+import { AdduserPage } from "../pages/adduser/adduser";
 import { CheckinPage } from "../pages/checkin/checkin";
+import { CheckinCompletePage } from "../pages/checkin-complete/checkin-complete";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -41,6 +42,7 @@ import { UtilsProvider } from '../providers/utils/utils';
     SearchPatientPage,
     CheckinPage,
     PatientDetailPage,
+    CheckinCompletePage,
     AdduserPage
   ],
   imports: [
@@ -62,6 +64,7 @@ import { UtilsProvider } from '../providers/utils/utils';
     SearchPatientPage,
     CheckinPage,
     PatientDetailPage,
+    CheckinCompletePage,
     AdduserPage
   ],
   providers: [

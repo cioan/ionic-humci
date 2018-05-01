@@ -27,7 +27,10 @@ export class UtilsProvider {
         return format(formatDate, 'MM/DD/YYYY');
       }
     }
-
     return date;
+  }
+
+  getCurrentDateTime() {
+    return format(new Date(), 'h:mmA, D-MMM-YYYY');
   }
 }

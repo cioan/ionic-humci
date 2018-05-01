@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PatientProvider } from '../../providers/patient/patient';
 import { UtilsProvider } from '../../providers/utils/utils';
+import { CheckinCompletePage } from "../checkin-complete/checkin-complete";
 
 
 /**
@@ -56,6 +57,12 @@ export class PatientDetailPage {
     if (this.navCtrl.canGoBack() ) {
       this.navCtrl.pop();
     }
+  }
+
+  confirm(){
+    this.navCtrl.push(CheckinCompletePage, {
+      data: this.patientDetails
+    });
   }
 
   ionViewDidLoad() {
