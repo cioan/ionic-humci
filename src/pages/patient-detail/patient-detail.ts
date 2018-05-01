@@ -52,6 +52,12 @@ export class PatientDetailPage {
     });
   }
 
+  goBack(){
+    if (this.navCtrl.canGoBack() ) {
+      this.navCtrl.pop();
+    }
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad PatientDetailPage');
   }
