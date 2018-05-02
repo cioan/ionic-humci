@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { SearchPatientProvider } from '../../providers/searchpatient/searchpatient';
 import { UtilsProvider } from '../../providers/utils/utils';
-import {PatientDetailPage} from "../patient-detail/patient-detail";
+import  {PatientDetailPage } from "../patient-detail/patient-detail";
 
 /**
  * Generated class for the CheckinPage page.
@@ -18,6 +18,7 @@ import {PatientDetailPage} from "../patient-detail/patient-detail";
 })
 export class CheckinPage {
 
+  loading: any;
   patients: any;
   results: any;
   rowData: any;
@@ -29,6 +30,7 @@ export class CheckinPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              public loadingCtrl: LoadingController,
               public searchPatientProvider: SearchPatientProvider,
               public utils: UtilsProvider) {
 
@@ -45,6 +47,12 @@ export class CheckinPage {
       }
     ];
 
+    this.loading = this.loadingCtrl.create({
+      spinner: 'circles',
+      content: 'Retrieving appointment list'
+    });
+    this.loading.present();
+
     this.dateUtils = utils;
     this.getPatients();
   }
@@ -58,6 +66,7 @@ export class CheckinPage {
       this.patients = data;
       console.log("number of records returned = " + this.patients.length );
       this.rowData = this.patients;
+      this.loading.dismiss();
     });
   }
 

@@ -20,7 +20,7 @@ export class AuthServiceProvider {
     console.log('Hello AuthServiceProvider Provider');
   }
 
-  postData(credentials, type) {
+  login(credentials) {
     return new Promise((resolve, reject) => {
 
       if (credentials && credentials.username) {

@@ -13,6 +13,10 @@
     {
       "path":"/patient",
       "proxyUrl":"https://bwenzi.pih-emr.org/openmrs/ws/rest/v1/patient"
+    },
+    {
+      "path":"/visit",
+      "proxyUrl":"https://bwenzi.pih-emr.org/openmrs/ws/rest/v1/visit"
     }
   ]
 }

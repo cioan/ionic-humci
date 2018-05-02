@@ -29,6 +29,7 @@ import { PatientProvider } from '../providers/patient/patient';
 
 import { httpInterceptorProviders } from '../http-interceptors'
 import { UtilsProvider } from '../providers/utils/utils';
+import { OmrsProvider } from '../providers/omrs/omrs';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { UtilsProvider } from '../providers/utils/utils';
     RestProvider,
     SearchPatientProvider,
     PatientProvider,
-    UtilsProvider
+    UtilsProvider,
+    OmrsProvider
   ]
 })
 export class AppModule {}

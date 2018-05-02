@@ -28,9 +28,8 @@ export class LoginPage {
 
   login(){
     if(this.userData.username && this.userData.password){
-      this.authService.postData(this.userData, "login").then((result) =>{
+      this.authService.login(this.userData).then((result) =>{
         this.resposeData = result;
-        console.log(this.resposeData);
         if(this.resposeData.user){
           localStorage.setItem('userData', JSON.stringify(this.resposeData) )
           this.navCtrl.push(TabsPage);

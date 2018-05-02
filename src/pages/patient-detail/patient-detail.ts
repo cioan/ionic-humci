@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { PatientProvider } from '../../providers/patient/patient';
 import { UtilsProvider } from '../../providers/utils/utils';
+import { OmrsProvider } from "../../providers/omrs/omrs";
 import { CheckinCompletePage } from "../checkin-complete/checkin-complete";
 
 
@@ -18,7 +19,7 @@ import { CheckinCompletePage } from "../checkin-complete/checkin-complete";
   templateUrl: 'patient-detail.html',
 })
 export class PatientDetailPage {
-
+  loading: any;
   patientUuid: string;
   patientDetails : any;
   patient = {
@@ -31,7 +32,9 @@ export class PatientDetailPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              public loadingCtrl: LoadingController,
               public utils: UtilsProvider,
+              public omrs: OmrsProvider,
               public patientProvider: PatientProvider) {
     this.patientUuid = navParams.get('data');
     console.log("patientUuid = " + this.patientUuid);
@@ -42,6 +45,7 @@ export class PatientDetailPage {
   getPatient(){
     this.patientProvider.getPatient(this.patientUuid).then( (result) => {
       this.patientDetails = result;
+      console.log('patientDetails = ' + this.patientDetails);
       if (result.hasOwnProperty("person")) {
         this.patient.display = this.patientDetails.display;
         this.patient.name = this.patientDetails.person.display;
@@ -59,10 +63,24 @@ export class PatientDetailPage {
     }
   }
 
-  confirm(){
-    this.navCtrl.push(CheckinCompletePage, {
-      data: this.patientDetails
+  complete(){
+
+    this.loading = this.loadingCtrl.create({
+      spinner: 'circles',
+      content: 'This is the "circles" spinner. It will dismiss after 3 seconds.',
+      duration: 3000
     });
+
+    this.loading.present();
+    this.omrs.createVisitWithCheckIn(this.patientDetails).then( data => {
+      console.log("visit created = " + data);
+      this.loading.dismiss();
+      this.navCtrl.push(CheckinCompletePage, {
+        data: this.patientDetails
+      });
+    });
+
+
   }
 
   ionViewDidLoad() {
