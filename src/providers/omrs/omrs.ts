@@ -10,6 +10,7 @@ import { UUID } from 'angular2-uuid';
   and Angular DI.
 */
 
+let visitCustomRep = 'v=custom:(uuid,id,display,patient:(uuid,id),location:(uuid,id,name,display),startDatetime,stopDatetime,encounters:(uuid,id,display,encounterDatetime,encounterType:(uuid,display,name)))';
 let NNO_LOCATION_UUID = '0d414ce2-5ab4-11e0-870c-9f6107fee88e';
 let CLINIC_VISIT_TYPE_UUID = 'f01c54cb-2225-471a-9cd5-d348552c337c';
 let ENCOUNTER_TYPE_UUID = '55a0d3ea-a4d7-4e88-8f01-5aceb2d3c61b';
@@ -55,7 +56,6 @@ export class OmrsProvider {
 
       return new Promise( (resolve, reject) => {
         this.http.post(window.location.origin + "/visit", visit).subscribe(data => {
-          console.log(data);
           resolve(data);
         }, (error: any) => {
           console.log("Error creating visit. error.status=" + error.status);
@@ -64,5 +64,17 @@ export class OmrsProvider {
       });
 
     }
+  }
+
+  getVisits(uuid: string) {
+    return new Promise( (resolve, reject) => {
+
+      this.http.get(window.location.origin + "/visit?includeInactive=false&patient=" + uuid + "&" + visitCustomRep).subscribe(data => {
+        resolve(data);
+      }, (error: any) => {
+        console.log("Error retrieving visit. Error.status=" + error.status);
+      });
+
+    });
   }
 }

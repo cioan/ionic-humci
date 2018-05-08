@@ -16,20 +16,26 @@
 <ion-content padding>
 
 
-  <ion-searchbar placeholder="Search by ID or Name" (ionInput)="filterPatients($event)">
+  <ion-searchbar autocomplete="nope" id="patientName" placeholder="Search by ID or Name" (ionInput)="filterPatients($event)">
 
   </ion-searchbar>
 
   <ion-label padding-top="16px">Today's Appointments</ion-label>
 
   <ag-grid-angular #agGrid
-    style="height: 100%"
+    style="width: 100%; height: 100%;"
     class="ag-theme-balham"
     [enableSorting]="true"
     [enableFilter]="true"
     [rowData]="rowData"
+    [animateRows]="true"
+    [enableCellChangeFlash]="true"
+    [rowClassRules]="rowClassRules"
+    [enableColResize]="true"
     [columnDefs]="columnDefs"
+    [getRowNodeId]="getRowNodeId"
     (gridReady)="onGridReady($event)"
+    (viewportChanged)="onModelUpdated($event)"
     (rowClicked)="selectPatient($event)"
   >
   </ag-grid-angular>

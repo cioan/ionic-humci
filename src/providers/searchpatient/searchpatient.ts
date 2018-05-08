@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map'
 
 let apiUrl = 'https://bwenzi.pih-emr.org/openmrs/ws/rest/v1/patient';
-let patientCustomRep = 'v=custom:(uuid,display,identifiers:(uuid,identifier,identifierType:(uuid),preferred),person:(uuid,display,gender,age,birthdate,birthdateEstimated,dead,deathDate,causeOfDeath,names,addresses,attributes))';
+let patientCustomRep = 'v=custom:(uuid,id,display,identifiers:(uuid,identifier,identifierType:(uuid),preferred),person:(uuid,display,gender,age,birthdate,birthdateEstimated,dead,deathDate,causeOfDeath,names,addresses,attributes))';
 
 /*
   Generated class for the SearchPatientProvider provider.
