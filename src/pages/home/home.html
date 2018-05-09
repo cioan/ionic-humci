@@ -8,17 +8,26 @@
   <h2>Welcome {{userDetails.person.display}}</h2>
 
   <p>
-    <button ion-button icon-start (click)="searchPatients()">
+    <button ion-button icon-start class="btn-app" (click)="searchPatients()">
       <ion-icon name='search'></ion-icon>
       Search Patients
     </button>
   </p>
   <p>
-    <button ion-button outline icon-start  (click)="checkin()">
+    <button ion-button large outline icon-start class="btn-app" (click)="checkin()">
       <ion-icon name='copy' is-active="false"></ion-icon>
       Check-in
     </button>
 
+    <button ion-button large outline icon-start class="btn-app" (click)="checkin()">
+      <ion-icon name='nutrition' is-active="false"></ion-icon>
+      Nutrition
+    </button>
+
+    <button ion-button large outline icon-start class="btn-app" (click)="checkin()">
+      <ion-icon name='heart' is-active="false"></ion-icon>
+      BP Screening
+    </button>
   </p>
 
 
