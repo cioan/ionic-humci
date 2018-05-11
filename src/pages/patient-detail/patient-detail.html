@@ -38,6 +38,44 @@
 
   </ion-list>
 
+  <!-- Display BP card and related alerts only if patient >= 19 years old-->
+  <ion-card *ngIf="age >= BP_MIN_AGE">
+
+    <ion-card-content>
+      <ion-card-title>
+        Blood Pressure
+      </ion-card-title>
+      <p *ngIf="bpAlert != ''" style="color: red; font-size: large; font-weight: bold">
+        {{bpAlert}}
+      </p>
+      <p *ngIf="bps.length == 0">
+        None recorded today
+      </p>
+      <ion-list *ngIf="bps.length > 0">
+        <!--<ion-item *ngFor="let bp of bps">-->
+          <!--{{bp.value}} <span style="color: gray; font-style: italic">{{bp.datetime}}</span>-->
+        <!--</ion-item>-->
+        <ion-item-sliding *ngFor="let bp of bps">
+          <ion-item>
+            {{bp.systolic}}/{{bp.diastolic}} <span style="color: gray; font-style: italic">{{bp.dateRecorded}}</span>
+          </ion-item>
+          <ion-item-options>
+            <button ion-button color="danger" (click)="voidBP()">Void</button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start (click)="presentModal()">
+          <ion-icon name='add'></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
 
   <p>
     <button ion-button color="danger" icon-start (click)="goBack()">Cancel</button>

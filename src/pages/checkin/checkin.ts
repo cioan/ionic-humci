@@ -89,7 +89,7 @@ export class CheckinPage {
 
   getPatients() {
 
-    this.searchPatientProvider.getResults('George Cha').then( data => {
+    this.searchPatientProvider.getResults('George').then( data => {
       this.results = data;
       if (this.results) {
         this.patients = [];
