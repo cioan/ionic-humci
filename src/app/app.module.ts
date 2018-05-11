@@ -30,6 +30,8 @@ import { PatientProvider } from '../providers/patient/patient';
 import { httpInterceptorProviders } from '../http-interceptors'
 import { UtilsProvider } from '../providers/utils/utils';
 import { OmrsProvider } from '../providers/omrs/omrs';
+import {BpModalPage} from "../pages/bp-modal/bp-modal";
+import { VitalsProvider } from '../providers/vitals/vitals';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { OmrsProvider } from '../providers/omrs/omrs';
     CheckinPage,
     PatientDetailPage,
     CheckinCompletePage,
-    AdduserPage
+    AdduserPage,
+    BpModalPage
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -66,7 +69,8 @@ import { OmrsProvider } from '../providers/omrs/omrs';
     CheckinPage,
     PatientDetailPage,
     CheckinCompletePage,
-    AdduserPage
+    AdduserPage,
+    BpModalPage
   ],
   providers: [
     StatusBar,
@@ -78,7 +82,8 @@ import { OmrsProvider } from '../providers/omrs/omrs';
     SearchPatientProvider,
     PatientProvider,
     UtilsProvider,
-    OmrsProvider
+    OmrsProvider,
+    VitalsProvider
   ]
 })
 export class AppModule {}

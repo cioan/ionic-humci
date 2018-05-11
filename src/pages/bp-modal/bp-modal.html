@@ -1,0 +1,31 @@
+<!--
+  Generated template for the BpModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Enter BP:</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <ion-input type="number" placeholder="Systolic" style="font-size: larger" (ionChange)="setSystolic($event.value)"></ion-input>
+    </ion-col>
+    <ion-col style="font-size: 240%">/</ion-col>
+    <ion-col>
+      <ion-input type="number" placeholder="Diastolic" style="font-size: larger" (ionChange)="setDiastolic($event.value)"></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <button ion-button icon-right color="danger" (click)="cancel()">Cancel</button>
+  <button ion-button item-end color="secondary" (click)="saveBP()">Save</button>
+
+</ion-content>
+

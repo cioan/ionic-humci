@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {compareAsc, format, isValid} from "date-fns";
+import {D} from "@angular/core/src/render3";
 
 /*
   Generated class for the UtilsProvider provider.
@@ -68,5 +69,29 @@ export class UtilsProvider {
       }
     }
     return null;
+  }
+
+  // the date returned by OpenMRS web services looks like this:
+  // "1995-07-01T00:00:00.000+0000"
+  jsDateFromOmrsDate(omrsDate) {
+    if (typeof omrsDate === "string") {
+      let arr = omrsDate.split(/[\-\+ :T]/);
+      let jsDate: Date = new Date();
+      jsDate.setFullYear(+arr[0], +arr[1] - 1, +arr[2]);
+      jsDate.setHours(+arr[3], +arr[4], +arr[5], +arr[6]);
+      return jsDate;
+    }
+    else {
+      return omrsDate;
+    }
+  }
+
+  daysAgo(omrsDate) {
+    let inputDate: Date = this.jsDateFromOmrsDate(omrsDate);
+    let todayDate: Date = new Date();
+    inputDate.setHours(0, 0, 0, 0);
+    todayDate.setHours(0, 0, 0, 0);
+    let timeDiff = todayDate.getTime() - inputDate.getTime();
+    return timeDiff/(24*60*60*1000);
   }
 }

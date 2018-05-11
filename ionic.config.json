@@ -17,6 +17,11 @@
     {
       "path":"/visit",
       "proxyUrl":"https://bwenzi.pih-emr.org/openmrs/ws/rest/v1/visit"
+    },
+    {
+      "path":"/encounter",
+      "proxyUrl":"https://bwenzi.pih-emr.org/openmrs/ws/rest/v1/encounter"
     }
+
   ]
 }
